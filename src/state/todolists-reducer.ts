@@ -25,6 +25,7 @@ export type ChangeTodolistFilterActionType = {
 type ActionsType = RemoveTodolistActionType | AddTodolistActionType
     | ChangeTodolistTitleActionType
     | ChangeTodolistFilterActionType
+    | SetTodosACType
 
 const initialState: Array<TodolistDomainType> = [
     /*{id: todolistId1, title: 'What to learn', filter: 'all', addedDate: '', order: 0},
@@ -84,12 +85,23 @@ export const changeTodolistFilterAC = (id: string, filter: FilterValuesType): Ch
     return {type: 'CHANGE-TODOLIST-FILTER', id: id, filter: filter}
 }
 
+export const setTodosAC = (todos: TodolistType[]) => {
+  return {
+    type: 'SET-TODOS',
+    payload: {
+      todos
+    }
+  } as const
+}
+
+
+export type SetTodosACType = ReturnType<typeof setTodosAC>
 
 // thunk
 
 export const fetchTodosTC = () => (dispatch: Dispatch) => {
   todolistsAPI.getTodolists()
     .then(res => {
-      debugger
+
     })
 }
