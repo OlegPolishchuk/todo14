@@ -57,7 +57,7 @@ export const Todolist = React.memo(function (props: PropsType) {
 
   useEffect(() => {
     dispatch(fetchTasksTC(props.id))
-  })
+  }, [])
 
   return <div>
     <h3><EditableSpan value={props.title} onChange={changeTodolistTitle}/>
